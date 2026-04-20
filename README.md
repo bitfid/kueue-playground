@@ -83,24 +83,24 @@ Built for the CNCF Community.
 If you find this useful, please ⭐ the repo!
 
 <img width="1408" height="768" alt="restaurantAnalagy" src="https://github.com/user-attachments/assets/2ede1fa3-a2a8-4cf0-8b73-866d4b23fdd5" />
-
+-
 
 <img width="1408" height="768" alt="pov_vs_job" src="https://github.com/user-attachments/assets/d491c11a-d7dd-43af-a86c-5198480c5d0f" />
 
-
+-
 <img width="1408" height="768" alt="schedularFailure" src="https://github.com/user-attachments/assets/453b68f4-6353-4b7b-b474-7c9bd3665903" />
-
+-
 
 <img width="1408" height="768" alt="kueueAdmissionGate" src="https://github.com/user-attachments/assets/115f7045-c9a5-492b-a4a5-7521213c0aba" />
 
-
+-
 <img width="1408" height="768" alt="kueuePreemption" src="https://github.com/user-attachments/assets/57a8d620-1e3f-4ada-999e-252190362585" />
 
-
+-
 <img width="1408" height="768" alt="kueueWorkflow" src="https://github.com/user-attachments/assets/ee878b22-01cd-41fe-847e-14ddad4c6a54" />
 
-
+-
 <img width="1408" height="768" alt="tinyRestaurantJob" src="https://github.com/user-attachments/assets/2dd50ca2-8482-4805-ae58-7ecffe354992" />
-
+-
 
 <img width="1408" height="768" alt="nginxJob" src="https://github.com/user-attachments/assets/654426e3-a629-4509-80ac-4fec72ad4069" />
