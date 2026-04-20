@@ -86,6 +86,7 @@ If you find this useful, please ⭐ the repo!
 <img width="1408" height="768" alt="restaurantAnalagy" src="https://github.com/user-attachments/assets/2ede1fa3-a2a8-4cf0-8b73-866d4b23fdd5" />
 <br>
 <img width="1408" height="768" alt="pov_vs_job" src="https://github.com/user-attachments/assets/d491c11a-d7dd-43af-a86c-5198480c5d0f" />
+
 <br>
 ---
 ### The Standard Scheduler "Partial Allocation" Crisis
@@ -130,12 +131,16 @@ The Preemption Logic: Kueue sees that Namespace B now requires its full quota. T
 Reclaimed Quota: Workload A1 is immediately stopped. This releases the borrowed 10 CPUs back to Namespace B.
 
 Order Restored: Reclaimed quota (20 CPUs/10 GPUs) is now available for the high-priority Job B. The fair sharing policy is enforced.
-<img width="1408" height="768" alt="kueueWorkflow" src="https://github.com/user-attachments/assets/ee878b22-01cd-41fe-847e-14ddad4c6a54" />
-
 ---
 ### Demo : First part where big-job which requests lot of CPU gets queued
 <img width="1408" height="768" alt="tinyRestaurantJob" src="https://github.com/user-attachments/assets/2dd50ca2-8482-4805-ae58-7ecffe354992" />
 
 ---
 ### Demo : Second part where nginx-job which requests less CPU gets through the gate
-<img width="1408" height="768" alt="nginxJob" src="https://github.com/user-attachments/assets/654426e3-a629-4509-80ac-4fec72ad4069" />
+<img width="1408" height="768" alt="nginxJob" src="https://github.com/user-attachments/assets/654426e3-a629-4509-80ac-4fec72ad4069" /> 
+
+---
+<br>
+## The Kueue Internal Components
+<img width="1408" height="768" alt="kueueWorkflow" src="https://github.com/user-attachments/assets/ee878b22-01cd-41fe-847e-14ddad4c6a54" />
+
