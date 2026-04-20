@@ -83,12 +83,11 @@ Built for the CNCF Community.
 If you find this useful, please ⭐ the repo!
 ---
 ### The Restaurant Analygy
+<br>
 <img width="1408" height="768" alt="restaurantAnalagy" src="https://github.com/user-attachments/assets/2ede1fa3-a2a8-4cf0-8b73-866d4b23fdd5" />
 <br>
 <img width="1408" height="768" alt="pov_vs_job" src="https://github.com/user-attachments/assets/d491c11a-d7dd-43af-a86c-5198480c5d0f" />
-
 <br>
-
 
 ## The Standard Scheduler "Partial Allocation" Crisis
 This scenario illustrates the exact failure point discussed in the podcast outline: how thousands of unrelated pod scheduling decisions create gridlock.
@@ -121,7 +120,9 @@ What this diagram shows:
 
 ## Borrowing and Preemption (The Advanced Logic)
 This final diagram visualizes the powerful concepts of ResourceFlavors and Fair Sharing that you’ll discuss in later episodes. It shows how Kueue maximizes utilization without compromising access.
+<br>
 <img width="1408" height="768" alt="kueuePreemption" src="https://github.com/user-attachments/assets/57a8d620-1e3f-4ada-999e-252190362585" />
+<br>
 What this diagram shows:
 
 1. Time T0 (Resource Borrowing): There are two teams, Namespace A and Namespace B, each with a ClusterQueue of 10 GPUs and 20 CPUs. Currently, only Workload A1 (which needs 30 CPUs) is running. It consumes all 20 of Namespace A’s CPUs, but because Namespace B is not using its resources (Active Workload B1 is small), Workload A1 can borrow 10 CPUs. The cluster utilization is maximized.
