@@ -81,16 +81,18 @@ This repository serves as the companion source code for the technical podcast an
 
 Built for the CNCF Community.
 If you find this useful, please ⭐ the repo!
-
+---
 ### The Restaurant Analygy
 <img width="1408" height="768" alt="restaurantAnalagy" src="https://github.com/user-attachments/assets/2ede1fa3-a2a8-4cf0-8b73-866d4b23fdd5" />
 <br>
+<img width="1408" height="768" alt="pov_vs_job" src="https://github.com/user-attachments/assets/d491c11a-d7dd-43af-a86c-5198480c5d0f" />
+<br>
+---
 ### The Standard Scheduler "Partial Allocation" Crisis
 This scenario illustrates the exact failure point discussed in the podcast outline: how thousands of unrelated pod scheduling decisions create gridlock.
 
 A large, distributed job (like the 100-node training session) requires "All-or-Nothing" scheduling. The default scheduler doesn't understand "All," only "One."
-<img width="1408" height="768" alt="pov_vs_job" src="https://github.com/user-attachments/assets/d491c11a-d7dd-43af-a86c-5198480c5d0f" />
-<br>
+<img width="1408" height="768" alt="schedularFailure" src="https://github.com/user-attachments/assets/453b68f4-6353-4b7b-b474-7c9bd3665903" />
 What this diagram shows:
 
 Atomic Pod Decisions: The Scheduler is looking only at immediate space. It seats Pods from Job A and Job B interleaved on available nodes (Nodes 1, 2, 4, 5).
@@ -98,9 +100,8 @@ Atomic Pod Decisions: The Scheduler is looking only at immediate space. It seats
 Resource Fragmentation: By trying to be efficient in the short term, the scheduler fragments the cluster.
 
 The Crisis: Job B (green) has only 4 of its 5 required pods scheduled (Node 5 is full). Job A (blue) has many pods scattered, but not nearly enough to run its 100-node training. Both large, critical jobs are stalled, and the cluster is locked down by pending pods.
+---
 
-<img width="1408" height="768" alt="schedularFailure" src="https://github.com/user-attachments/assets/453b68f4-6353-4b7b-b474-7c9bd3665903" />
-<br>
 ### The Kueue Solution—The Admission Gate
 This is the central metaphor of Kueue. It changes the sequence of events. Instead of trying to schedule the chaos, Kueue creates a waiting room upstream of the scheduler.
 <img width="1408" height="768" alt="kueueAdmissionGate" src="https://github.com/user-attachments/assets/115f7045-c9a5-492b-a4a5-7521213c0aba" />
@@ -113,7 +114,8 @@ The Waiting Room: Instead of flooding the API server with 105 Pending pods, Kueu
 The Gate: The "Admission Gate" is locked. It only opens when the Cluster-Wide Quota Check validates that resources (e.g., A100 GPUs) are available.
 
 Orderly Admission: Job B (5 GPUs) is smaller than the available quota (20 GPUs), so the gate opens (green arrow). The entire Job B is admitted at once. Job A remains blocked, as it needs 100 GPUs and only 20 are available. No resource fragmentation occurs.
-<br>
+---
+
 ### Borrowing and Preemption (The Advanced Logic)
 This final diagram visualizes the powerful concepts of ResourceFlavors and Fair Sharing that you’ll discuss in later episodes. It shows how Kueue maximizes utilization without compromising access.
 <img width="1408" height="768" alt="kueuePreemption" src="https://github.com/user-attachments/assets/57a8d620-1e3f-4ada-999e-252190362585" />
@@ -128,10 +130,12 @@ The Preemption Logic: Kueue sees that Namespace B now requires its full quota. T
 Reclaimed Quota: Workload A1 is immediately stopped. This releases the borrowed 10 CPUs back to Namespace B.
 
 Order Restored: Reclaimed quota (20 CPUs/10 GPUs) is now available for the high-priority Job B. The fair sharing policy is enforced.
-
-<br>
 <img width="1408" height="768" alt="kueueWorkflow" src="https://github.com/user-attachments/assets/ee878b22-01cd-41fe-847e-14ddad4c6a54" />
-<br>
+
+---
+### Demo : First part where big-job which requests lot of CPU gets queued
 <img width="1408" height="768" alt="tinyRestaurantJob" src="https://github.com/user-attachments/assets/2dd50ca2-8482-4805-ae58-7ecffe354992" />
-<br>
+
+---
+### Demo : Second part where nginx-job which requests less CPU gets through the gate
 <img width="1408" height="768" alt="nginxJob" src="https://github.com/user-attachments/assets/654426e3-a629-4509-80ac-4fec72ad4069" />
