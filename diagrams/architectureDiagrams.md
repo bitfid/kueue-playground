@@ -7,8 +7,6 @@
 <br>
 <img width="1408" height="768" alt="pov_vs_job" src="https://github.com/user-attachments/assets/271033bf-baff-4f73-be1d-39636344e30c" />
 <br>
-<img width="1408" height="768" alt="kueueWorkflow" src="https://github.com/user-attachments/assets/074782a7-4088-4d76-b16b-990ee043575d" />
-<br>
 <img width="1408" height="768" alt="kueueInternalComponents" src="https://github.com/user-attachments/assets/233426f4-5878-4c69-9094-9980d42e080e" />
 
 
