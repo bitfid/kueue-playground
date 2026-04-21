@@ -1,6 +1,14 @@
+---
+## 🎙️ bitfid Content Series
+This repository serves as the companion source code for the technical podcast and video series. If you are following along with the "Kueue vs. Scheduler" episode, all demo files are located in /manifests.
+
+Built for the CNCF Community.
+If you find this useful, please ⭐ the repo!
+---
+
 # 🚦 Kueue Batch Orchestration: The "Restaurant" Guide
 
-Welcome to the ultimate resource hub for understanding and deploying **Kueue**—the Kubernetes-native job queueing controller. This project bridges the gap between standard Pod scheduling and complex Batch/AI workload management using a simple, relatable **Restaurant Analogy**.
+Welcome to the bidfid resource hub for understanding and deploying **Kueue**—the Kubernetes-native job queueing controller. This project bridges the gap between standard Pod scheduling and complex Batch/AI workload management using a simple, relatable **Restaurant Analogy**.
 
 ---
 
@@ -26,7 +34,11 @@ This project explores the internal mechanics of the Kueue Manager:
 * **ResourceFlavor:** Different "table types" (e.g., standard nodes, GPU-enabled nodes).
 * **Admission Manager:** The decision engine that flips the `suspend: true` flag to `false`.
 
-
+<br>
+<img width="1408" height="768" alt="restaurantAnalagy" src="https://github.com/user-attachments/assets/2ede1fa3-a2a8-4cf0-8b73-866d4b23fdd5" />
+<br>
+<img width="1408" height="768" alt="pov_vs_job" src="https://github.com/user-attachments/assets/d491c11a-d7dd-43af-a86c-5198480c5d0f" />
+<br>
 
 ---
 
@@ -38,6 +50,9 @@ You can run this entire demo on your laptop using **Minikube** or **Kind**.
 * [Minikube](https://minikube.sigs.k8s.io/docs/start/) or [Kind](https://kind.sigs.k8s.io/)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/)
 * [Kueue installed](https://kueue.sigs.k8s.io/docs/installation/) on your cluster.
+```Plaintext
+https://kueue.sigs.k8s.io/docs/installation/
+```
 
 ### 2. Setup the "Tiny Restaurant"
 Apply the configuration to limit your cluster to a 1 CPU quota:
@@ -59,13 +74,12 @@ kubectl get jobs -w
 ```
 ---
 ## 🛡️ Enterprise & Security
-For production environments, this repository includes an assessment covering:
+Kueue is officially a Kubernetes SIG (Special Interest Group) project, which means it follows the same rigorous development and stability standards as Kubernetes itself.
 
-RBAC: Limiting who can modify ClusterQueues.
-
-Multi-tenancy: Using Cohorts for resource sharing between departments.
-
-Admission Checks: Integrating external security/data scans before a job is allowed to run.
+* Production Adoption: Major organizations (e.g., CyberAgent, CoreWeave) and cloud providers use it in production to manage expensive GPU clusters.
+* Scalability: It is specifically designed to handle "Batch" scale—managing thousands of jobs without overwhelming the Kubernetes API server, which is a common breaking point for enterprises.
+* Multi-Tenancy: It is built for the enterprise "Shared Cluster" model. Its ClusterQueue and ResourceFlavor abstractions allow platform teams to set hard quotas for different departments (e.g., "Research" vs. "Production") while allowing for safe resource borrowing.
+* Integration: It integrates natively with popular enterprise tools like Kubeflow, Ray, JobSet, and Cluster Autoscaler.
 
 ## 📁 Project Structure
 ```Plaintext
@@ -76,19 +90,6 @@ Admission Checks: Integrating external security/data scans before a job is allow
 └── docs/                # Detailed technical deep-dives
 ```
 ---
-## 🎙️ bitfid Content Series
-This repository serves as the companion source code for the technical podcast and video series. If you are following along with the "Kueue vs. Scheduler" episode, all demo files are located in /manifests.
-
-Built for the CNCF Community.
-If you find this useful, please ⭐ the repo!
----
-### The Restaurant Analygy
-<br>
-<img width="1408" height="768" alt="restaurantAnalagy" src="https://github.com/user-attachments/assets/2ede1fa3-a2a8-4cf0-8b73-866d4b23fdd5" />
-<br>
-<img width="1408" height="768" alt="pov_vs_job" src="https://github.com/user-attachments/assets/d491c11a-d7dd-43af-a86c-5198480c5d0f" />
-<br>
-
 ## The Standard Scheduler "Partial Allocation" Crisis
 This scenario illustrates the exact failure point discussed in the podcast outline: how thousands of unrelated pod scheduling decisions create gridlock.
 
