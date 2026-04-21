@@ -72,6 +72,10 @@ Submit a job that fits (0.5 CPU) and watch Kueue admit it immediately:
 kubectl create -f ./manifests/nginx-job.yaml
 # Watch the 'suspend' flag flip from true to false
 kubectl get jobs -w
+# get all jobs
+kubectl get jobs
+# get all workloads
+kubectl get workloads
 ```
 <img width="1408" height="768" alt="nginxJob" src="https://github.com/user-attachments/assets/654426e3-a629-4509-80ac-4fec72ad4069" /> 
 
