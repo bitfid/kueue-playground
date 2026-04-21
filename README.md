@@ -23,6 +23,9 @@ Standard Kubernetes is like a restaurant with no host. Groups of diners (**Pods*
 * ✅ **Fair Sharing:** Different teams (Namespaces) get their fair share of the "Dining Room" (**ClusterQuota**).
 * ✅ **Resource Borrowing:** If one team isn't "hungry," another team can borrow their seats until they return.
 
+<img width="1408" height="768" alt="restaurantAnalagy" src="https://github.com/user-attachments/assets/2ede1fa3-a2a8-4cf0-8b73-866d4b23fdd5" />
+<br>
+<img width="1408" height="768" alt="pov_vs_job" src="https://github.com/user-attachments/assets/d491c11a-d7dd-43af-a86c-5198480c5d0f" />
 ---
 
 ## 🏗️ Architecture & Components
@@ -34,11 +37,7 @@ This project explores the internal mechanics of the Kueue Manager:
 * **ResourceFlavor:** Different "table types" (e.g., standard nodes, GPU-enabled nodes).
 * **Admission Manager:** The decision engine that flips the `suspend: true` flag to `false`.
 
-<br>
-<img width="1408" height="768" alt="restaurantAnalagy" src="https://github.com/user-attachments/assets/2ede1fa3-a2a8-4cf0-8b73-866d4b23fdd5" />
-<br>
-<img width="1408" height="768" alt="pov_vs_job" src="https://github.com/user-attachments/assets/d491c11a-d7dd-43af-a86c-5198480c5d0f" />
-<br>
+<img width="1408" height="768" alt="kueueWorkflow" src="https://github.com/user-attachments/assets/ee878b22-01cd-41fe-847e-14ddad4c6a54" />
 
 ---
 
@@ -139,11 +138,4 @@ What this diagram shows:
 3. The Preemption Logic: Kueue sees that Namespace B now requires its full quota. The Preemption Logic is triggered. It points back to Workload A1, which is now crossed out with a red X and labeled PREEMPTION TRIGGER.
 4. Reclaimed Quota: Workload A1 is immediately stopped. This releases the borrowed 10 CPUs back to Namespace B.
 5. Order Restored: Reclaimed quota (20 CPUs/10 GPUs) is now available for the high-priority Job B. The fair sharing policy is enforced.
-   
----
-
-## The Kueue Internal Components
-<br>
-<img width="1408" height="768" alt="kueueWorkflow" src="https://github.com/user-attachments/assets/ee878b22-01cd-41fe-847e-14ddad4c6a54" />
-<br>
 
