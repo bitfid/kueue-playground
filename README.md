@@ -1,6 +1,16 @@
+---
+
+## 🎙️ bitfid Content Series
+This repository serves as the companion source code for the technical podcast and video series. If you are following along with the "Kueue vs. Scheduler" episode, all demo files are located in /manifests.
+
+Built for the CNCF Community.
+If you find this useful, please ⭐ the repo!
+
+---
+
 # 🚦 Kueue Batch Orchestration: The "Restaurant" Guide
 
-Welcome to the ultimate resource hub for understanding and deploying **Kueue**—the Kubernetes-native job queueing controller. This project bridges the gap between standard Pod scheduling and complex Batch/AI workload management using a simple, relatable **Restaurant Analogy**.
+Welcome to the bidfid resource hub for understanding and deploying **Kueue**—the Kubernetes-native job queueing controller. This project bridges the gap between standard Pod scheduling and complex Batch/AI workload management using a simple, relatable **Restaurant Analogy**.
 
 ---
 
@@ -15,6 +25,10 @@ Standard Kubernetes is like a restaurant with no host. Groups of diners (**Pods*
 * ✅ **Fair Sharing:** Different teams (Namespaces) get their fair share of the "Dining Room" (**ClusterQuota**).
 * ✅ **Resource Borrowing:** If one team isn't "hungry," another team can borrow their seats until they return.
 
+<img width="1408" height="768" alt="restaurantAnalagy" src="https://github.com/user-attachments/assets/2ede1fa3-a2a8-4cf0-8b73-866d4b23fdd5" />
+<br>
+<img width="1408" height="768" alt="pov_vs_job" src="https://github.com/user-attachments/assets/d491c11a-d7dd-43af-a86c-5198480c5d0f" />
+
 ---
 
 ## 🏗️ Architecture & Components
@@ -26,7 +40,7 @@ This project explores the internal mechanics of the Kueue Manager:
 * **ResourceFlavor:** Different "table types" (e.g., standard nodes, GPU-enabled nodes).
 * **Admission Manager:** The decision engine that flips the `suspend: true` flag to `false`.
 
-
+<img width="1408" height="768" alt="kueueWorkflow" src="https://github.com/user-attachments/assets/ee878b22-01cd-41fe-847e-14ddad4c6a54" />
 
 ---
 
@@ -38,6 +52,9 @@ You can run this entire demo on your laptop using **Minikube** or **Kind**.
 * [Minikube](https://minikube.sigs.k8s.io/docs/start/) or [Kind](https://kind.sigs.k8s.io/)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/)
 * [Kueue installed](https://kueue.sigs.k8s.io/docs/installation/) on your cluster.
+```Plaintext
+https://kueue.sigs.k8s.io/docs/installation/
+```
 
 ### 2. Setup the "Tiny Restaurant"
 Apply the configuration to limit your cluster to a 1 CPU quota:
@@ -49,46 +66,42 @@ Submit a job that requests 2 CPUs. Since the quota is only 1 CPU, Kueue will hol
 ```bash
 kubectl create -f ./manifests/giant-job.yaml
 ```
+<img width="1408" height="768" alt="tinyRestaurantJob" src="https://github.com/user-attachments/assets/2dd50ca2-8482-4805-ae58-7ecffe354992" />
+
 ### 4. Scenario B: The "Small Job" (Success Path)
 Submit a job that fits (0.5 CPU) and watch Kueue admit it immediately:
 ```bash
 kubectl create -f ./manifests/nginx-job.yaml
-
 # Watch the 'suspend' flag flip from true to false
 kubectl get jobs -w
+# get all jobs
+kubectl get jobs
+# get all workloads
+kubectl get workloads
 ```
+<img width="1408" height="768" alt="nginxJob" src="https://github.com/user-attachments/assets/654426e3-a629-4509-80ac-4fec72ad4069" /> 
+
 ---
+
 ## 🛡️ Enterprise & Security
-For production environments, this repository includes an assessment covering:
+Kueue is officially a Kubernetes SIG (Special Interest Group) project, which means it follows the same rigorous development and stability standards as Kubernetes itself.
 
-RBAC: Limiting who can modify ClusterQueues.
-
-Multi-tenancy: Using Cohorts for resource sharing between departments.
-
-Admission Checks: Integrating external security/data scans before a job is allowed to run.
+* Production Adoption: Major organizations (e.g., CyberAgent, CoreWeave) and cloud providers use it in production to manage expensive GPU clusters.
+* Scalability: It is specifically designed to handle "Batch" scale—managing thousands of jobs without overwhelming the Kubernetes API server, which is a common breaking point for enterprises.
+* Multi-Tenancy: It is built for the enterprise "Shared Cluster" model. Its ClusterQueue and ResourceFlavor abstractions allow platform teams to set hard quotas for different departments (e.g., "Research" vs. "Production") while allowing for safe resource borrowing.
+* Integration: It integrates natively with popular enterprise tools like Kubeflow, Ray, JobSet, and Cluster Autoscaler.
 
 ## 📁 Project Structure
 ```Plaintext
-├── diagrams/            # Visual aids for the Restaurant Analogy
+├── diagrams/                 # Visual aids & Architecture Diagrams
 ├── manifests/           
-│   ├── tiny-restaurant/ # ClusterQueue & LocalQueue setup
-│   └── jobs/            # Sample Nginx and Batch jobs
-└── docs/                # Detailed technical deep-dives
+│   ├── tiny-restaurant.yaml  # ClusterQueue & LocalQueue setup
+│   └── jobs                  # Sample Nginx and Batch jobs
+│        └── giant-job.yaml
+│        └── nginx-job.yaml
+
 ```
 ---
-## 🎙️ bitfid Content Series
-This repository serves as the companion source code for the technical podcast and video series. If you are following along with the "Kueue vs. Scheduler" episode, all demo files are located in /manifests.
-
-Built for the CNCF Community.
-If you find this useful, please ⭐ the repo!
----
-### The Restaurant Analygy
-<br>
-<img width="1408" height="768" alt="restaurantAnalagy" src="https://github.com/user-attachments/assets/2ede1fa3-a2a8-4cf0-8b73-866d4b23fdd5" />
-<br>
-<img width="1408" height="768" alt="pov_vs_job" src="https://github.com/user-attachments/assets/d491c11a-d7dd-43af-a86c-5198480c5d0f" />
-<br>
-
 ## The Standard Scheduler "Partial Allocation" Crisis
 This scenario illustrates the exact failure point discussed in the podcast outline: how thousands of unrelated pod scheduling decisions create gridlock.
 
@@ -130,22 +143,4 @@ What this diagram shows:
 3. The Preemption Logic: Kueue sees that Namespace B now requires its full quota. The Preemption Logic is triggered. It points back to Workload A1, which is now crossed out with a red X and labeled PREEMPTION TRIGGER.
 4. Reclaimed Quota: Workload A1 is immediately stopped. This releases the borrowed 10 CPUs back to Namespace B.
 5. Order Restored: Reclaimed quota (20 CPUs/10 GPUs) is now available for the high-priority Job B. The fair sharing policy is enforced.
-
-
-## Demo : First part where big-job which requests lot of CPU gets queued
-<br>
-<img width="1408" height="768" alt="tinyRestaurantJob" src="https://github.com/user-attachments/assets/2dd50ca2-8482-4805-ae58-7ecffe354992" />
-<br>
-
-
-## Demo : Second part where nginx-job which requests less CPU gets through the gate
-<br>
-<img width="1408" height="768" alt="nginxJob" src="https://github.com/user-attachments/assets/654426e3-a629-4509-80ac-4fec72ad4069" /> 
-<br>
-
-
-## The Kueue Internal Components
-<br>
-<img width="1408" height="768" alt="kueueWorkflow" src="https://github.com/user-attachments/assets/ee878b22-01cd-41fe-847e-14ddad4c6a54" />
-<br>
 

@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: nginx-job-
+  labels:
+    kueue.x-k8s.io/queue-name: user-queue # This links it to our LocalQueue
+spec:
+  template:
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        command: ["sh", "-c", "echo 'I was admitted by Kueue!' && sleep 10"]
+        resources:
+          requests:
+            cpu: "500m" # Requests 0.5 CPU (Fits in our 1.0 CPU quota)
+      restartPolicy: Never
