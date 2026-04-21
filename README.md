@@ -93,11 +93,13 @@ Kueue is officially a Kubernetes SIG (Special Interest Group) project, which mea
 
 ## 📁 Project Structure
 ```Plaintext
-├── diagrams/            # Visual aids & Architecture Diagrams
+├── diagrams/                 # Visual aids & Architecture Diagrams
 ├── manifests/           
-│   ├── tiny-restaurant/ # ClusterQueue & LocalQueue setup
-│   └── jobs/            # Sample Nginx and Batch jobs
-└── docs/                # Detailed technical deep-dives
+│   ├── tiny-restaurant.yaml  # ClusterQueue & LocalQueue setup
+│   └── jobs                  # Sample Nginx and Batch jobs
+|        └── giant-job.yaml
+|        └── nginx-job.yaml
+
 ```
 ---
 ## The Standard Scheduler "Partial Allocation" Crisis
