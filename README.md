@@ -64,14 +64,19 @@ Submit a job that requests 2 CPUs. Since the quota is only 1 CPU, Kueue will hol
 ```bash
 kubectl create -f ./manifests/giant-job.yaml
 ```
+<br>
+<img width="1408" height="768" alt="tinyRestaurantJob" src="https://github.com/user-attachments/assets/2dd50ca2-8482-4805-ae58-7ecffe354992" />
+<br>
 ### 4. Scenario B: The "Small Job" (Success Path)
 Submit a job that fits (0.5 CPU) and watch Kueue admit it immediately:
 ```bash
 kubectl create -f ./manifests/nginx-job.yaml
-
 # Watch the 'suspend' flag flip from true to false
 kubectl get jobs -w
 ```
+<br>
+<img width="1408" height="768" alt="nginxJob" src="https://github.com/user-attachments/assets/654426e3-a629-4509-80ac-4fec72ad4069" /> 
+<br>
 ---
 ## 🛡️ Enterprise & Security
 Kueue is officially a Kubernetes SIG (Special Interest Group) project, which means it follows the same rigorous development and stability standards as Kubernetes itself.
@@ -131,19 +136,8 @@ What this diagram shows:
 3. The Preemption Logic: Kueue sees that Namespace B now requires its full quota. The Preemption Logic is triggered. It points back to Workload A1, which is now crossed out with a red X and labeled PREEMPTION TRIGGER.
 4. Reclaimed Quota: Workload A1 is immediately stopped. This releases the borrowed 10 CPUs back to Namespace B.
 5. Order Restored: Reclaimed quota (20 CPUs/10 GPUs) is now available for the high-priority Job B. The fair sharing policy is enforced.
-
-
-## Demo : First part where big-job which requests lot of CPU gets queued
-<br>
-<img width="1408" height="768" alt="tinyRestaurantJob" src="https://github.com/user-attachments/assets/2dd50ca2-8482-4805-ae58-7ecffe354992" />
-<br>
-
-
-## Demo : Second part where nginx-job which requests less CPU gets through the gate
-<br>
-<img width="1408" height="768" alt="nginxJob" src="https://github.com/user-attachments/assets/654426e3-a629-4509-80ac-4fec72ad4069" /> 
-<br>
-
+   
+---
 
 ## The Kueue Internal Components
 <br>
