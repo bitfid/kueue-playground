@@ -97,8 +97,8 @@ Kueue is officially a Kubernetes SIG (Special Interest Group) project, which mea
 ├── manifests/           
 │   ├── tiny-restaurant.yaml  # ClusterQueue & LocalQueue setup
 │   └── jobs                  # Sample Nginx and Batch jobs
-|        └── giant-job.yaml
-|        └── nginx-job.yaml
+│        └── giant-job.yaml
+│        └── nginx-job.yaml
 
 ```
 ---
