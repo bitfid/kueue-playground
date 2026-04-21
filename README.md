@@ -1,4 +1,5 @@
 ---
+
 ## 🎙️ bitfid Content Series
 This repository serves as the companion source code for the technical podcast and video series. If you are following along with the "Kueue vs. Scheduler" episode, all demo files are located in /manifests.
 
@@ -27,6 +28,7 @@ Standard Kubernetes is like a restaurant with no host. Groups of diners (**Pods*
 <img width="1408" height="768" alt="restaurantAnalagy" src="https://github.com/user-attachments/assets/2ede1fa3-a2a8-4cf0-8b73-866d4b23fdd5" />
 <br>
 <img width="1408" height="768" alt="pov_vs_job" src="https://github.com/user-attachments/assets/d491c11a-d7dd-43af-a86c-5198480c5d0f" />
+
 ---
 
 ## 🏗️ Architecture & Components
