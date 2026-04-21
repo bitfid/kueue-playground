@@ -73,10 +73,10 @@ kubectl create -f ./manifests/nginx-job.yaml
 # Watch the 'suspend' flag flip from true to false
 kubectl get jobs -w
 ```
-<br>
 <img width="1408" height="768" alt="nginxJob" src="https://github.com/user-attachments/assets/654426e3-a629-4509-80ac-4fec72ad4069" /> 
-<br>
+
 ---
+
 ## 🛡️ Enterprise & Security
 Kueue is officially a Kubernetes SIG (Special Interest Group) project, which means it follows the same rigorous development and stability standards as Kubernetes itself.
 
