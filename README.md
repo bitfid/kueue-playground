@@ -93,7 +93,7 @@ Kueue is officially a Kubernetes SIG (Special Interest Group) project, which mea
 
 ## 📁 Project Structure
 ```Plaintext
-├── diagrams/            # Visual aids for the Restaurant Analogy
+├── diagrams/            # Visual aids & Architecture Diagrams
 ├── manifests/           
 │   ├── tiny-restaurant/ # ClusterQueue & LocalQueue setup
 │   └── jobs/            # Sample Nginx and Batch jobs
