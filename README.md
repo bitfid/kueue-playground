@@ -52,8 +52,10 @@ You can run this entire demo on your laptop using **Minikube** or **Kind**.
 * [Minikube](https://minikube.sigs.k8s.io/docs/start/) or [Kind](https://kind.sigs.k8s.io/)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/)
 * [Kueue installed](https://kueue.sigs.k8s.io/docs/installation/) on your cluster.
-```Plaintext
-https://kueue.sigs.k8s.io/docs/installation/
+  
+```bash
+#https://kueue.sigs.k8s.io/docs/installation/
+kubectl apply --server-side -f https://github.com/kubernetes-sigs/kueue/releases/download/v0.17.1/manifests.yaml
 ```
 
 ### 2. Setup the "Tiny Restaurant"
