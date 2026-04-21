@@ -9,4 +9,3 @@
 <br>
 <img width="1408" height="768" alt="kueueWorkflow" src="https://github.com/user-attachments/assets/3a114a57-ce07-4b48-abdc-8ff19b6c63ea" />
 <br>
-<img width="1408" height="768" alt="kueueInternalComponents" src="https://github.com/user-attachments/assets/f769fd41-0d27-4aad-9995-193e3581cfec" />
