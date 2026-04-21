@@ -1,0 +1,26 @@
+apiVersion: kueue.x-k8s.io/v1beta1
+kind: ResourceFlavor
+metadata:
+  name: "default-flavor"
+---
+apiVersion: kueue.x-k8s.io/v1beta1
+kind: ClusterQueue
+metadata:
+  name: "tiny-cluster-queue"
+spec:
+  namespaceSelector: {} # Match all namespaces
+  resourceGroups:
+  - coveredResources: ["cpu"]
+    flavors:
+    - name: "default-flavor"
+      resources:
+      - name: "cpu"
+        nominalQuota: "1" # Only 1 CPU allowed in the whole "restaurant"
+---
+apiVersion: kueue.x-k8s.io/v1beta1
+kind: LocalQueue
+metadata:
+  namespace: default
+  name: "user-queue"
+spec:
+  clusterQueue: "tiny-cluster-queue"
