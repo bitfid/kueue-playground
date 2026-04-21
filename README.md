@@ -2,8 +2,8 @@
 ## 🎙️ bitfid Content Series
 This repository serves as the companion source code for the technical podcast and video series. If you are following along with the "Kueue vs. Scheduler" episode, all demo files are located in /manifests.
 
-Built for the CNCF Community.
-If you find this useful, please ⭐ the repo!
+##Built for the CNCF Community.
+##If you find this useful, please ⭐ the repo!
 ---
 
 # 🚦 Kueue Batch Orchestration: The "Restaurant" Guide
