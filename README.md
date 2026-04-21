@@ -64,9 +64,8 @@ Submit a job that requests 2 CPUs. Since the quota is only 1 CPU, Kueue will hol
 ```bash
 kubectl create -f ./manifests/giant-job.yaml
 ```
-<br>
 <img width="1408" height="768" alt="tinyRestaurantJob" src="https://github.com/user-attachments/assets/2dd50ca2-8482-4805-ae58-7ecffe354992" />
-<br>
+
 ### 4. Scenario B: The "Small Job" (Success Path)
 Submit a job that fits (0.5 CPU) and watch Kueue admit it immediately:
 ```bash
